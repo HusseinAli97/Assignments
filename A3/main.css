@@ -1,0 +1,478 @@
+/* Universal property  */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Alegreya', serif;
+    font-weight: 400;
+}
+
+/* Home */
+.home {
+    background-image: url(./Photo/Home.jpg);
+    background-position: center;
+    height: 80vh;
+    color: #fff;
+    background-repeat: no-repeat
+}
+.bar {
+    width: 60%;
+    text-align: left;
+    padding: 20px 0 0;
+    margin: auto;
+}
+.bar img {
+    width: 15%;
+    vertical-align: middle;
+}
+.bar ul {
+    width: 80%;
+    text-align: right;
+    display: inline-block;
+    padding-top: 20px;
+    list-style: none;
+    vertical-align: middle;
+}
+.bar ul li{
+    display: inline-block;
+    margin:0 20px 0 0;
+    font-size: 18px;
+    font-family: 'Alegreya', serif;
+    font-weight: 400;
+    
+}
+.text {
+    margin: 60px auto 0;
+    width: 37%;
+    padding: 0 60px;
+    text-align: center;
+}
+.text h1 {
+    font-size: 76px;
+    font-family: 'Alegreya', serif;
+    font-weight: 400;
+    margin: 10px 0;
+}
+.text p {
+    font-family: 'Alegreya Sans', sans-serif;
+    color: #eee;
+    font-weight: 400;
+}
+.text .open {
+    font-size: 22px;
+    padding-top: 70px;
+}
+.text .discribe {
+    font-size: 24px;
+    line-height: 44px;
+    margin-top: 15px;
+
+}
+.text .btn {
+    margin: 50px 0 5px;
+    padding: 20px 25px;
+    font-family: 'Alegreya Sans', sans-serif;
+    font-weight: 700;
+    border: 3px solid white;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    color: #eee;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 22px;
+}
+
+.text .btn-one {
+    background-color: #8e7754;
+    border-color: transparent;
+}
+
+/* .text .btn-one:hover {
+    background-color: #eee;
+    color: black;
+    transition: all ease-in-out .5s;
+    -webkit-transition: all ease-in-out .5s;
+    -moz-transition: all ease-in-out .5s;
+    -ms-transition: all ease-in-out .5s;
+    -o-transition: all ease-in-out .5s;
+} */
+.text .btn-two {
+    background-color: transparent;
+    margin-left: 15px;
+}
+.text .an-mation {
+    height: 70px;
+    width: 35px;
+    margin: 100px auto;
+    border: 3px solid #dddddd5b;
+    border-radius:24px ;
+    -webkit-border-radius:24px ;
+    -moz-border-radius:24px ;
+    -ms-border-radius:24px ;
+    -o-border-radius:24px ;
+}
+.an-mation .an-dot {
+    background-color: white;
+    height: 10px;
+    width: 10px;
+    margin: 20px auto;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    animation-name: up-down;
+    animation-timing-function:linear;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    
+}
+/* Animation */
+@keyframes up-down {
+    0% {
+        margin-top: 20px;
+        background-color: #eeeeee;
+    }
+    50%{
+        margin-top: 50px;
+        background-color: #eeeeee00;
+    }
+    100% {
+        margin-top: 20px;
+        background-color: #eeeeee;
+    }
+}
+
+
+/* Se-Who We Are? */
+.se-who {
+    text-align: center;
+    padding: 40px 0;
+    font-weight: 400;
+    width: 80%;
+    margin: 0 auto;
+}
+.se-who .se-img {
+    width: 38%;
+    height: auto;
+    padding: 70px;
+    vertical-align: middle;
+
+}
+.se-text {
+    display: inline-block;
+    width: 40%;
+    text-align: left;
+    vertical-align: middle;
+    padding: 30px 0;
+}
+.se-text h2 {
+    font-size: 32px;
+    margin: 0 0 25px;
+    line-height: 44px;
+    font-weight: 300;
+}
+.se-text p {
+    font-size: 17px;
+    font-family:"Alegreya Sans";
+    line-height: 32px;
+}
+.se-text ul {
+    margin: 50px 0 ;
+}
+.se-text ul li {
+    margin: 0 0 25px;
+    list-style: none;
+}
+.se-text ul li img {
+    margin-right: 15px;
+    width: 42px;
+    vertical-align: middle;
+
+}
+.se-text ul li p {
+    display: inline-block;
+}
+/* Who Are We Section
+.se-who {
+    padding: 40px 0;
+    text-align: center;
+    width: 100%;
+}
+.se-who h2 {
+    font-size: 30px;
+    font-weight: 300;
+    padding: 20px 0px;
+    color: black;
+}
+.se-discribe {
+    line-height: 35px;
+    width:60%;
+    font-weight: 400;
+}
+.se-who .se-text {
+    width: 40%;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+    padding: 40px;
+    color: #686868;
+}
+.se-who .se-text p {
+    font-family: 'Alegreya Sans', sans-serif;
+    font-size: 17px;
+}
+
+.se-img {
+    width: 30%;
+    padding: 40px;
+    margin-left: 20px;
+    vertical-align: middle;
+
+}
+.se-text ul {
+    list-style: none;
+}
+.se-text ul li {
+    margin: 15px 0;
+}
+
+.se-text ul li img {
+vertical-align: middle;
+width: 6%;
+}
+.se-text ul li p {
+display: inline-block;
+padding: 0 10px;
+} */
+
+
+
+/* Our Location */
+.se-location {
+    background-color: #f8f8f8;
+}
+.lo-text h2 {
+    margin: 0 0 25px;
+}
+.lo-text p {
+    margin: 0 0 20px;
+}
+
+/* our Baking */
+.se-baking {
+    text-align: center;
+    padding: 40px 0;
+    font-weight: 400;
+    width: 67%;
+    margin: 0 auto;
+}
+
+
+.beak {
+    float: left;
+    width: 33.33%;
+    padding: 0 30px;
+}
+.beak img {
+    width: 100%;
+}
+.se-baking h2 {
+    font-size: 30px;
+    font-family: 'Alegreya';
+    font-weight: 400;
+}
+.se-baking p {
+    /* margin: 17px 40px 50px; */
+    font-size: 18px;
+    font-weight: 400;
+    font-family: 'Alegreya sans';
+    color:#888;
+}
+.beak h3 {
+    font-weight: 400;
+    font-size: 24;
+    margin: 15px 0;
+}
+.beak p {
+    line-height: 1.5;
+}
+
+.icons {
+    width: 100%;;
+}
+.sup {
+    display: inline-block;
+}
+.sup img {
+    vertical-align: middle;
+}
+.sup p {
+    width: 100%;
+}
+.se-contact {
+    text-align: center;
+    padding: 40px 0;
+    font-weight: 400;
+    width: 65%;
+    margin: 0 auto;
+}
+.locate {
+    float: left;
+}
+
+.se-contact .txt {
+    text-align: left;
+    line-height: 2;
+    width: 50%;
+}
+.se-contact .txt h2 {
+    font-size: 25.5px;
+    margin: 0 0 25px;
+    font-weight: 400;
+    font-family: Alegreya;
+    color: #4a4a4a;
+}
+.se-contact .txt p {
+    font-size: 18px;
+    font-weight: 400;
+    color: #888;
+    margin-bottom: 25px;
+}
+.se-contact .txt li {
+    font-size: 17px;
+    font-weight: 400;
+    font-family: Alegreya;
+    color: #888;
+    list-style: none;
+    margin-bottom: 15px;
+}
+.locate img, .icon img {
+    vertical-align: middle;
+    width: 42px;
+    height: 42px;
+    background-color: #8e7754;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.locate span {
+    margin: 0 10px 0 0;
+}
+
+.map {
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+    float: right;
+}
+
+.clear {
+    clear: both;
+}
+/* Footer */
+.bg-color {
+    background-color: #403d38;
+}
+.se-footer {
+    text-align: center;
+    padding: 40px 0;
+    font-weight: 400;
+    width: 65%;
+    margin: 0 auto;
+    color: #eee;
+    list-style: none;
+    line-height: 32px;
+}
+.upper div{
+float: left;   
+width: 23%;
+text-align: left;
+}
+.upper div ul {
+    list-style: none;
+
+}
+.upper div h4 {
+    font-size: 18px;
+    font-family: Alegreya;
+    margin: 0 0 25px;
+    font-weight: 400;
+}
+.upper div > p {
+    font-family: "Alegreya Sans";
+    margin: 0 0 20px;
+    font-weight: 400;
+    color: #969696;
+}
+
+.se-footer ul li , .se-footer ul div , .sub-li{
+    color: #969696;
+    margin: 0 0 6px;
+    padding: 0 0 7px;
+    font-family: "Alegreya Sans";
+    font-weight: 400;
+}
+.upper div {
+    padding: 0 10px;
+}
+.upper ul.hr li  {
+    border-bottom: 1.5px solid #96969621 ;
+}
+.upper ul li span , .sub-li span {
+    font-size: 25px;
+    padding-right: 10px;
+}
+
+.upper .fot-ico img {
+    height: 42px;
+    width: 42px;
+    vertical-align: top;
+}
+.fot-ico p {
+    display: inline-block;
+    width: 80%;
+    vertical-align: bottom;
+}
+
+/* lower */
+.lower {
+    padding: 80px 0 20px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #353330;
+
+}
+.lower > img {
+    margin-bottom: 25px;
+}
+.lower p {
+    font-size: 15px;
+    color: #777777;
+    font-family: "Alegreya Sans";
+    margin: 5px 0 0;
+}
+.lo-icons {
+    margin: 25px 0 0;
+}
+.lower .lo-icons li{
+    display: inline-block;
+    list-style: none;
+
+}
+.lower .lo-icons img {
+    width: 42px;
+    height: 42px;
+    margin: 0 2px;
+    background-color:#44403a;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body style="background-color: #222;">
+<form>
+    <fieldset style="background-color: rgb(223, 23, 67);">
+        <legend style="background-color: aquamarine;">Personal Data</legend>
+        <br><br>
+        <fieldset style="background-color: orange;">
+            <legend style="background-color: #00a6ff;"><br><br> <strong>YourName</strong> <br><br><br></legend>
+            <br><br>
+                <table >
+                    <tr>
+                        <td><label for="fName">Frist Name </label></td>
+                        <td>:</td>
+                        <td><input type="text" name="uFname" placeholder="ex Hussein" id="fName"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="sName">Second Name </label></td>
+                        <td>:</td>
+                        <td><input type="text" name="uSname" placeholder="ex Mohammed" id="sName"></td>
+                    </tr>
+                </table>
+        </fieldset>
+        <br><br><br>
+            <table >
+                <tr>
+                    <td>
+                        <label for="phone">Your phone</label><br>
+                        <label for="mail">Email</label><br>
+                        <label for="pass">Password </label><br>
+                        <label for="rePass">re-Password</label><br>
+                    </td>
+                    <td> 
+                        : <br>
+                        : <br> 
+                        : <br> 
+                        : <br>
+                    </td>
+                    <td>
+                        <input type="tel" pattern="[0-9]{11}"name="uTel"  id="phone"><br>
+                        <input type="email" name="uMail"  id="mail"><br>
+                        <input type="password" name="uPass"  id="pass"><br>
+                        <input type="password" name="rPass"  id="rePass"><br>
+                    </td>
+                </tr>
+            </table>
+            <br><br><br><br><br>
+            <input type="radio" id="M" name="Gender">
+            <label for="M">Male</label>
+            <br>
+            <input type="radio" id="F" name="Gender">
+            <label for="F">Female</label>
+            <br><br><br>
+            <input type="checkbox" id="St" name="stats">
+            <label for="St">Male</label>
+            <br>
+            <input type="checkbox" id="Gr" name="stats">
+            <label for="Gr">Graduated</label>
+            <br><br><br><br><br>
+            <select name="selectData">
+                <!-- None select by default -->
+                <!-- <option value="" selected disabled> --- Select Option ---</option> -->
+                <optgroup label="Group1" >
+                    <option value="op1.1">Option1.1</option>
+                </optgroup>
+                <optgroup label="Group2" >
+                    <option  value="opt2.1" selected>Option2.1</option>
+                    <option value="op2.2">Option2.2</option>
+                </optgroup>
+                <optgroup label="Group3" disabled>
+                    <option value="opt3.1" disabled>Option3.1</option>
+                    <option value="opt3.2" disabled>Option3.2</option>
+                    <option value="opt3.3" disabled>Option3.3</option>
+                </optgroup>
+            </select>
+            <br><br>
+            <!-- <input type="image" src="./photo/btn.jpg" alt="sm" width="70px" height="35px"> -->
+            <!-- best practice solve  -->
+            <button type="submit" style="background-color: inherit; border: 0; cursor: pointer;">
+                <img src="./photo/btn.jpg" alt="submit" width="100px" >
+            </button>
+        </fieldset>
+</form>
+</body>
+</html>
