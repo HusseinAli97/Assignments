@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="icon" href="imgs/favicons/favicon.png">
+    <title>DevFolio</title>
     <!-- *LINK - MAIN FONT AWESOME - FILE -->
     <link rel="stylesheet" href="css/all.min.css">
     <!-- *LINK - MAIN BOOTSTRAP - FILE -->
@@ -12,11 +13,64 @@
     <!-- *LINK - MAIN CSS - FILE -->
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    
-
-
+<body data-bs-spy="scroll" data-bs-target="#scroll-spy">
+    <!-- *!SECTION - NAV BAR - START -->
+<header id="head" class="bg-black py-2 text-white fixed-top nav-c-op">
+    <div class="container d-flex justify-content-between align-items-center">
+        <h1 class="logo">
+            <a href="#" class="navbar-brand fs-2"> DevFolio</a>
+        </h1>
+        <nav class="navbar navbar-dark navbar-expand-lg " id="scroll-spy">
+                <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbar-ico">
+                    <span class="navbar-toggler-icon "></span>
+                </button>
+                <div class="collapse navbar-collapse offcanvas-lg offcanvas-start bg-black nav-c-op text-start offca-c"  data-bs-scroll="true" data-bs-backdrop="false" id="navbar-ico">
+                    <ul class="navbar-nav w-100 text-start px-3">
+                        <li class="nav-item">
+                            <a class="nav-link text-white fw-semibold text-uppercase active" href="#home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white fw-semibold text-uppercase" href="#about">about</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white fw-semibold text-uppercase" href="#work">Work</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white fw-semibold text-uppercase" href="services.html">services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white fw-semibold text-uppercase" href="work.html">work</a>
+                        </li>
+                        <li class="nav-item dropdown  ">
+                            <a class="nav-link text-white fw-semibold text-uppercase dropdown-toggle" role="button" data-bs-toggle="dropdown" href="#">dropdown</a>
+                            <ul class="dropdown-menu d-lg-block">
+                                <li><a class="dropdown-item" href="#">Dropdown1</a></li>
+                                <li class="dropdown-submenu "> 
+                                    <a class="dropdown-item" href="#"> Second Level 
+                                        <span class="float-end custom-toggle-arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
+                                    </a>
+                                    <ul class="dropdown-menu  ">
+                                        <li><a class="dropdown-item" href="#">Dropdown1</a></li>
+                                        <li><a class="dropdown-item" href="#">Dropdown1</a></li>
+                                        <li><a class="dropdown-item" href="#">Dropdown1</a></li>
+                                        <li><a class="dropdown-item" href="#">Dropdown1</a></li>
+                                    </ul>
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white fw-semibold text-uppercase" href="contact.html">contact</a>
+                        </li>
+                    </ul>
+                </div>
+        </nav>
+    </div>
+</header>
+    <!-- *!SECTION - NAV BAR - END -->
     <!-- *ANCHOR - BOOTSTRAP JS - FILE -->
-    <script src="Js/bootstrap.min.js"></script>
+    <script src="Js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

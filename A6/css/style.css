@@ -1,0 +1,107 @@
+.nav-c-op {
+    opacity: .90;
+}
+
+nav .dropdown-menu {
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+}
+.dropdown-submenu{
+    position: relative;
+    overflow: hidden;
+    transition: all .3s;
+} 
+.dropdown-submenu:hover {
+    overflow: visible;
+}
+.dropdown-submenu:hover .dropdown-menu {
+    visibility: visible;
+    opacity: 1;
+    right: 100%;
+}
+.dropdown-submenu .dropdown-menu {
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    right: -100%;
+    position: absolute;
+    top: 0%;
+    transition: all .3s;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+}
+
+
+nav .dropdown-menu li a {
+    font-weight: 500;
+    padding: 10px 30px;
+}
+nav .dropdown-menu li a:hover {
+    color: rgb(40, 146, 216);
+}
+nav .navbar-nav li.dropdown ul {
+    transition: .3s;
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -ms-transition: .3s;
+    -o-transition: .3s;
+}
+nav .navbar-nav li.dropdown:hover ul {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+.offca-c ul li {
+    position: relative;
+}
+.offca-c ul li::before,
+.active::after {
+    content: "";
+    width: 0%;
+    height: 1px;
+    background-color: #fff;
+    bottom: 0;
+    left: 10%;
+    position: absolute;
+    transition: .5s width ease;
+    -webkit-transition: .5s width ease;
+    -moz-transition: .5s width ease;
+    -ms-transition: .5s width ease;
+    -o-transition: .5s width ease;
+}
+.offca-c ul li:hover::before,
+.active::after {
+    width: 80%;
+}
+
+    @media all and (max-width:992px) {
+        .offca-c ul li::before,
+        .active::after {
+            left: 0;
+        }
+        .dropdown-submenu:hover .dropdown-menu {
+            position: relative;
+            visibility: visible;
+            opacity: 1;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+        .offca-c {
+            height: 90%;
+            margin-top: 70px;
+            
+        }
+    
+    }
+    @media all and (min-width:992px) {
+        nav .navbar-nav li.dropdown ul {
+            opacity: 0 !important;
+            visibility:hidden !important;
+        }
+    
+    }
