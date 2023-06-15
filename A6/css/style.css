@@ -1,7 +1,3 @@
-.nav-c-op {
-    opacity: .90;
-}
-
 nav .dropdown-menu {
     border-radius: 0;
     -webkit-border-radius: 0;
@@ -9,19 +5,23 @@ nav .dropdown-menu {
     -ms-border-radius: 0;
     -o-border-radius: 0;
 }
-.dropdown-submenu{
+
+.dropdown-submenu {
     position: relative;
     overflow: hidden;
     transition: all .3s;
-} 
+}
+
 .dropdown-submenu:hover {
     overflow: visible;
 }
+
 .dropdown-submenu:hover .dropdown-menu {
     visibility: visible;
     opacity: 1;
     right: 100%;
 }
+
 .dropdown-submenu .dropdown-menu {
     display: block;
     visibility: hidden;
@@ -41,9 +41,11 @@ nav .dropdown-menu li a {
     font-weight: 500;
     padding: 10px 30px;
 }
+
 nav .dropdown-menu li a:hover {
     color: rgb(40, 146, 216);
 }
+
 nav .navbar-nav li.dropdown ul {
     transition: .3s;
     -webkit-transition: .3s;
@@ -51,57 +53,304 @@ nav .navbar-nav li.dropdown ul {
     -ms-transition: .3s;
     -o-transition: .3s;
 }
+
 nav .navbar-nav li.dropdown:hover ul {
     opacity: 1 !important;
     visibility: visible !important;
 }
-.offca-c ul li {
+
+.ul-castum li {
     position: relative;
 }
-.offca-c ul li::before,
-.active::after {
+
+.ul-castum>li::after,
+.ul-castum li>a.active::after {
     content: "";
+    position: absolute;
+    height: 3px;
     width: 0%;
-    height: 1px;
-    background-color: #fff;
     bottom: 0;
     left: 10%;
-    position: absolute;
-    transition: .5s width ease;
-    -webkit-transition: .5s width ease;
-    -moz-transition: .5s width ease;
-    -ms-transition: .5s width ease;
-    -o-transition: .5s width ease;
+    background-color: rebeccapurple;
+    transition: width .3s;
+    -webkit-transition: width .3s;
+    -moz-transition: width .3s;
+    -ms-transition: width .3s;
+    -o-transition: width .3s;
 }
-.offca-c ul li:hover::before,
-.active::after {
+
+.ul-castum>li:hover::after,
+.ul-castum li>a.active::after {
     width: 80%;
 }
 
-    @media all and (max-width:992px) {
-        .offca-c ul li::before,
-        .active::after {
-            left: 0;
-        }
-        .dropdown-submenu:hover .dropdown-menu {
-            position: relative;
-            visibility: visible;
-            opacity: 1;
-            top: 0;
-            left: 0;
-            right: 0;
-        }
-        .offca-c {
-            height: 90%;
-            margin-top: 70px;
-            
-        }
-    
+.ul-castum li>a.active::after {}
+
+@media all and (max-width:992px) {
+    .dropdown-submenu:hover .dropdown-menu {
+        position: relative;
+        visibility: visible;
+        opacity: 1;
+        top: 0;
+        left: 0;
+        right: 0;
     }
-    @media all and (min-width:992px) {
-        nav .navbar-nav li.dropdown ul {
-            opacity: 0 !important;
-            visibility:hidden !important;
-        }
-    
+
+    .ul-castum>li::after,
+    .ul-castum li>a.active::after {
+        left: 0;
     }
+}
+
+@media all and (min-width:992px) {
+    nav .navbar-nav li.dropdown ul {
+        opacity: 0 !important;
+        visibility: hidden !important;
+    }
+
+}
+
+.hero-bg {
+    background-image: url('../imgs/hero/hero-bg.jpg');
+    background-position: center;
+    background-size: cover;
+    font-size: calc(10px + 0.390625vw);
+}
+
+.fonts-c {
+    font-size: 3em;
+}
+
+
+.auto-type::before {
+    content: "";
+    animation: typing 15s infinite linear;
+    -webkit-animation: typing 15s infinite linear;
+}
+
+
+.auto-type.indent::after {
+    content: "";
+    margin-left: 8px;
+    border-right: 5px solid #ddd;
+    animation: blink 0.5s linear infinite;
+    -webkit-animation: blink 0.5s linear infinite;
+}
+
+
+@media (prefers-reduced-motion) {
+    .auto-type::after {
+        animation: none;
+    }
+}
+
+@keyframes typing {
+
+    0.0000%,
+    27.3488% {
+        content: "";
+    }
+
+    1.1395%,
+    26.2093% {
+        content: "D";
+    }
+
+    2.2791%,
+    25.0698% {
+        content: "De";
+    }
+
+    3.4186%,
+    23.9302% {
+        content: "Des";
+    }
+
+    4.5581%,
+    22.7907% {
+        content: "Desi";
+    }
+
+    5.6977%,
+    21.6512% {
+        content: "Desig";
+    }
+
+    6.8372%,
+    20.5116% {
+        content: "Design";
+    }
+
+    7.9767%,
+    19.3721% {
+        content: "Designe";
+    }
+
+    9.1163%,
+    18.2326% {
+        content: "Designer";
+    }
+
+    10.2558%,
+    17.0930% {
+        content: "Designer";
+    }
+
+    30.7674%,
+    54.2791% {
+        content: "";
+    }
+
+    31.9070%,
+    53.1395% {
+        content: "D";
+    }
+
+    33.0465%,
+    52.0000% {
+        content: "De";
+    }
+
+    34.1860%,
+    51.8605% {
+        content: "Dev";
+    }
+
+    35.3256%,
+    50.7209% {
+        content: "Deve";
+    }
+
+    36.4651%,
+    49.5814% {
+        content: "Devel";
+    }
+
+    37.4651%,
+    48.5814% {
+        content: "Develo";
+    }
+
+    38.4651%,
+    47.5814% {
+        content: "Develop";
+    }
+
+    39.4651%,
+    46.5814% {
+        content: "Develope";
+    }
+
+    40.6047%,
+    45.4419% {
+        content: "Developer";
+    }
+
+    58.6977%,
+    81.2093% {
+        content: "";
+    }
+
+    59.8372%,
+    81.0698% {
+        content: "F";
+    }
+
+    60.9767%,
+    80.9302% {
+        content: "Fr";
+    }
+
+    61.1163%,
+    79.7907% {
+        content: "Fre";
+    }
+
+    62.2558%,
+    78.6512% {
+        content: "Free";
+    }
+
+    63.3953%,
+    77.5116% {
+        content: "Freel";
+    }
+
+    64.3953%,
+    76.5116% {
+        content: "Freela";
+    }
+
+    65.3953%,
+    75.5116% {
+        content: "Freelan";
+    }
+
+    66.3953%,
+    74.5116% {
+        content: "Freelanc";
+    }
+
+    67.3953%,
+    73.5116% {
+        content: "Freelance";
+    }
+
+    68.5349%,
+    72.3721% {
+        content: "Freelancer";
+    }
+
+    82.6279%,
+    96% {
+        content: "";
+    }
+
+    83.0000%,
+    95.7209% {
+        content: "F";
+    }
+
+    84.9070%,
+    94.0814% {
+        content: "Fr";
+    }
+
+    85.0525%,
+    93.9419% {
+        content: "Forn";
+    }
+
+    86.9860%,
+    92.1023% {
+        content: "Front";
+    }
+
+    87.0256%,
+    91.9628% {
+        content: "Fronte";
+    }
+
+    88.0256%,
+    90.1628% {
+        content: "Fronten";
+    }
+
+    88.9256%,
+    89.9628% {
+        content: "Frontend";
+    }
+
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
