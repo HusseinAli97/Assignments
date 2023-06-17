@@ -5,12 +5,11 @@
 }
 .portDetials,
 #contact,
-#testimonial,
-#work {
+#testimonial{
     background: linear-gradient(#0078f036, #0078f070), url('../imgs/fixed-bg/overlay-bg.jpg');
+    background-attachment: fixed;
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
 }
 /* *NOTE - GLOBAL - END */
 
@@ -446,6 +445,9 @@ nav .navbar-nav li.dropdown:hover ul {
 
 #work {
     background: linear-gradient(#0078f07e, #0078f07e), url('../imgs/fixed-bg/counters-bg.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
     padding: 80px 0;
 }
 
