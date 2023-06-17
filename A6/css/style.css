@@ -483,7 +483,7 @@ nav .navbar-nav li.dropdown:hover ul {
 }
 
 #portfolio .card img {
-    transition: transform 1.6s ease;
+    transition: transform 1.5s ease;
     -webkit-transition: transform 1.6s ease;
     -moz-transition: transform 1.6s ease;
     -ms-transition: transform 1.6s ease;
