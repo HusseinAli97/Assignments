@@ -34,7 +34,7 @@ window.addEventListener('load', function () {
   var spinner = document.getElementById('spinner');
   
   setTimeout(function () {
-      spinner.style.display = 'none'; // Hide the spinner after the specified duration
-  }, 1500); // Adjust the duration as needed
+      spinner.style.display = 'none';
+  }, 1500);
 });
 
