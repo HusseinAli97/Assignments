@@ -30,11 +30,11 @@ $(document).ready(function () {
   });
 });
 // Spinner Loading
-window.addEventListener('load', function () {
-  var spinner = document.getElementById('spinner');
+// window.addEventListener('load', function () {
+//   var spinner = document.getElementById('spinner');
   
-  setTimeout(function () {
-      spinner.style.display = 'none';
-  }, 1500);
-});
+//   setTimeout(function () {
+//       spinner.style.display = 'none';
+//   }, 1500);
+// });
 
