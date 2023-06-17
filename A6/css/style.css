@@ -637,10 +637,6 @@ textarea {
     display: block;
 }
 
-.porto-inde {
-    bottom: -50px;
-}
-
 .porto-inde button {
     width: 12px !important;
     height: 12px !important;
@@ -656,5 +652,6 @@ textarea {
 .porto-inde button.active {
     background-color: #0062d3 !important;
 }
+
 /* *LINK - PORTFOLIO DETAILS - PAGE- END */
 
