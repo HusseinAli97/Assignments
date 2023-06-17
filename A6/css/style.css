@@ -427,11 +427,11 @@ nav .navbar-nav li.dropdown:hover ul {
     width: 120px;
     margin: 0 auto;
     border: 10px solid var(--MAIN-COLOR);
-    transition: all var(--MAIN-DURATION);
-    -webkit-transition: all var(--MAIN-DURATION);
-    -moz-transition: all var(--MAIN-DURATION);
-    -ms-transition: all var(--MAIN-DURATION);
-    -o-transition: all var(--MAIN-DURATION);
+    transition: all .5s;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -ms-transition: all .5s;
+    -o-transition: all .5s;
 }
 
 .card-icon:hover {
@@ -483,11 +483,11 @@ nav .navbar-nav li.dropdown:hover ul {
 }
 
 #portfolio .card img {
-    transition: transform 1var(--MAIN-DURATION) ease;
-    -webkit-transition: transform 1var(--MAIN-DURATION) ease;
-    -moz-transition: transform 1var(--MAIN-DURATION) ease;
-    -ms-transition: transform 1var(--MAIN-DURATION) ease;
-    -o-transition: transform 1var(--MAIN-DURATION) ease;
+    transition: transform 1.5s ease;
+    -webkit-transition: transform 1.5s ease;
+    -moz-transition: transform 1.5s ease;
+    -ms-transition: transform 1.5s ease;
+    -o-transition: transform 1.5s ease;
 }
 
 #portfolio .card img:hover {
