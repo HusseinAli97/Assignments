@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A7 - JS</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-12 w-100">
+                <div class="data-square form-control-lg d-flex flex-column justify-content-center align-items-center">
+                    <p id="outputSquare">Your Output here</p>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3 g-3">
+            <div class="col-md-4 mx-auto d-flex flex-column  justify-content-center row-gap-3">
+                <input type="number" max="100" min="0" class="form-control-lg text-center" id="chemistInput"
+                    placeholder="Enter Your Chemist Degree">
+                <input type="number" max="100" min="0" class="form-control-lg text-center" id="biologyInput"
+                    placeholder="Enter Your Biology Degree">
+                <input type="number" max="100" min="0" class="form-control-lg text-center" id="archeologyInput"
+                    placeholder="Enter Your Archeology Degree">
+                <input type="number" max="100" min="0" class="form-control-lg text-center" id="geologyInput"
+                    placeholder="Enter Your Geology Degree">
+                <input type="number" max="100" min="0" class="form-control-lg text-center" id="physicsInput"
+                    placeholder="Enter Your Physics Degree">
+            </div>
+            <div class="col-md-12 d-flex justify-content-center column-gap-3">
+                <button class="btn btn-primary btn-lg" id="resetButton" onclick="resetData()">Reset</button>
+                <button class="btn btn-primary btn-lg" id="enterButton" onclick="showData()">Enter Data</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        var chemistInput = document.getElementById("chemistInput");
+        var biologyInput = document.getElementById("biologyInput");
+        var archeologyInput = document.getElementById("archeologyInput");
+        var geologyInput = document.getElementById("geologyInput");
+        var physicsInput = document.getElementById("physicsInput");
+        var outputSquare = document.getElementById("outputSquare");
+        var enterButton = document.getElementById("enterButton");
+        function resetData() {
+            chemistInput.value = "";
+            biologyInput.value = "";
+            archeologyInput.value = "";
+            geologyInput.value = "";
+            physicsInput.value = "";
+            outputSquare.textContent = "Your Output here";
+        }
+        function showData() {
+            var chemist = Number(chemistInput.value);
+            var biology = Number(biologyInput.value);
+            var archeology = Number(archeologyInput.value);
+            var geology = Number(geologyInput.value);
+            var physics = Number(physicsInput.value);
+            var totalMarks = chemist + biology + archeology + geology + physics;
+            var Percent = (totalMarks / 500) * 100;
+            //check if input is num or string
+            if (
+                !Number.isInteger(chemist) ||
+                !Number.isInteger(biology) ||
+                !Number.isInteger(archeology) ||
+                !Number.isInteger(geology) ||
+                !Number.isInteger(physics)
+            ) {
+                outputSquare.textContent = "Your Value is not a number or you entered a float number";
+            } else {
+                if (Percent >= 90 && Percent <= 100) {
+                    outputSquare.textContent = "Your Grade => 'A' ";
+                } else if (Percent >= 80 && Percent <= 90) {
+                    outputSquare.textContent = "Your Grade => 'B' ";
+                } else if (Percent >= 70 && Percent <= 80) {
+                    outputSquare.textContent = "Your Grade => 'C' ";
+                } else if (Percent >= 60 && Percent <= 70) {
+                    outputSquare.textContent = "Your Grade => 'D' ";
+                } else if (Percent >= 50 && Percent <= 60) {
+                    outputSquare.textContent = "Your Grade => 'E' ";
+                } else if (percent < 50 && Percent >= 0) {
+                    outputSquare.textContent = "Your Grade => 'F' ";
+                } else {
+                    outputSquare.textContent = "Your Value is not Valid";
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

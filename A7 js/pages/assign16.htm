@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A7 - JS</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-12 w-100">
+                <div class="data-square form-control-lg d-flex flex-column justify-content-center align-items-center"
+                    id="outputSquare">
+                    <p>Your Output here</p>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3 g-3">
+            <div class="col-md-12 d-flex justify-content-center column-gap-3">
+                <input type="text" class="form-control-lg" id="userInput" placeholder="Enter a Letter">
+            </div>
+            <div class="col-md-12 d-flex justify-content-center column-gap-3">
+                <button class="btn btn-primary btn-lg" id="resetButton" onclick="resetData()">Reset</button>
+                <button class="btn btn-primary btn-lg" id="enterButton" onclick="showData()">Enter Data</button>
+            </div>
+        </div>
+    </div>
+    <script src="Js/main.js"></script>
+    <script>
+        function resetData() {
+            var userInput = document.getElementById("userInput");
+            var outputSquare = document.getElementById("outputSquare");
+            userInput.value = "";
+            outputSquare.textContent = "Your Output here";
+        }
+        function showData() {
+            var userInput = document.getElementById("userInput").value;
+            var outputSquare = document.getElementById("outputSquare");
+            var letter = userInput.toLowerCase();
+            if (letter.length > 1 || !(isNaN(letter))) {
+                alert("Please enter a single letter");
+            } else {
+                switch (letter) {
+                    case "a":
+                    case "e":
+                    case "i":
+                    case "o":
+                    case "u":
+                        outputSquare.textContent = `You entered: ${letter}, it's a vowel`;
+                        break;
+                    default:
+                        outputSquare.textContent = `You entered: ${letter}, it's a consonant`;
+                        break;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

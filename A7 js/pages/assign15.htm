@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A7 - JS a15</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row d-flex ">
+            <div class="col-md-12">
+                <div class="data-square form-control-lg d-flex flex-column justify-content-center align-items-center">
+                    <p id="outputsquare">Your Data Output</p>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3 g-3">
+            <div class="col-md-4 mx-auto d-flex justify-content-center align-item-center ">
+                <input type="text" id="monthInput" class="form-control-lg w-100 text-center"
+                    placeholder="Your Month Number or Name">
+            </div>
+            <div class="col-md-12 d-flex justify-content-center column-gap-3">
+                <button class="btn btn-primary btn-lg" id="resetButton" onclick="resetData()">Reset Data</button>
+                <button class="btn btn-primary btn-lg" id="enterButton" onclick="enterData()">Enter Data</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        var monthInput = document.getElementById("monthInput");
+        var outputSquare = document.getElementById("outputsquare");
+        function resetData() {
+            monthInput.value = "";
+            outputSquare.innerHTML = "Your Data Output";
+        }
+        function enterData() {
+            switch (monthInput.value.toLowerCase()) {
+                case "january":
+                case "1": outputSquare.innerHTML = `Your Month Is => January Days in This Month is : 31 Day `;
+                    break;
+                case "february":
+                case "2": outputSquare.innerHTML = `Your Month Is => February Days in This Month is : 28 Day `;
+                    break;
+                case "march":
+                case "3": outputSquare.innerHTML = `Your Month Is => March Days in This Month is : 31 Day `;
+                    break;
+                case "april":
+                case "4": outputSquare.innerHTML = `Your Month Is => April Days in This Month is : 30 Day `;
+                    break;
+                case "may":
+                case "5": outputSquare.innerHTML = `Your Month Is => May Days in This Month is : 31 Day `;
+                    break;
+                case "june":
+                case "6": outputSquare.innerHTML = `Your Month Is => June Days in This Month is : 30 Day `;
+                    break;
+                case "july":
+                case "7": outputSquare.innerHTML = `Your Month Is => July Days in This Month is : 31 Day `;
+                    break;
+                case "august":
+                case "8": outputSquare.innerHTML = `Your Month Is => August Days in This Month is : 31 Day `;
+                    break;
+                case "september":
+                case "9": outputSquare.innerHTML = `Your Month Is => September Days in This Month is : 30 Day `;
+                    break;
+                case "october":
+                case "10": outputSquare.innerHTML = `Your Month Is => October Days in This Month is : 31 Day `;
+                    break;
+                case "november":
+                case "11": outputSquare.innerHTML = `Your Month Is => November Days in This Month is : 30 Day `;
+                    break;
+                case "december":
+                case "12": outputSquare.innerHTML = `Your Month Is => December Days in This Month is : 31 Day `;
+                    break;
+                default: outputSquare.innerHTML = "Invalid month number! or name";
+            }
+        }
+
+    </script>
+</body>
+
+</html>

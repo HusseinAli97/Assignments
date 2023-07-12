@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A7 - JS</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-12 w-100">
+                <div class="data-square form-control-lg d-flex flex-column justify-content-center align-items-center"
+                    id="outputSquare">
+                    <p>Your Output here</p>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3 g-3">
+            <div class="col-md-4 mx-auto d-flex flex-column  justify-content-center row-gap-3">
+                <input type="number" max="100" min="0" class="form-control-lg" id="chemistInput"
+                    placeholder="Enter Your Chemist Degree">
+                <input type="number" max="100" min="0" class="form-control-lg" id="biologyInput"
+                    placeholder="Enter Your Biology Degree">
+                <input type="number" max="100" min="0" class="form-control-lg" id="archeologyInput"
+                    placeholder="Enter Your Archeology Degree">
+                <input type="number" max="100" min="0" class="form-control-lg" id="geologyInput"
+                    placeholder="Enter Your Geology Degree">
+                <input type="number" max="100" min="0" class="form-control-lg" id="physicsInput"
+                    placeholder="Enter Your Physics Degree">
+            </div>
+            <div class="col-md-12 d-flex justify-content-center column-gap-3">
+                <button class="btn btn-primary btn-lg" id="resetButton" onclick="resetData()">Reset</button>
+                <button class="btn btn-primary btn-lg" id="enterButton" onclick="showData()">Enter Data</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        var chemistInput = document.getElementById("chemistInput");
+        var biologyInput = document.getElementById("biologyInput");
+        var archeologyInput = document.getElementById("archeologyInput");
+        var geologyInput = document.getElementById("geologyInput");
+        var physicsInput = document.getElementById("physicsInput");
+        var outputSquare = document.getElementById("outputSquare");
+        var enterButton = document.getElementById("enterButton");
+        function resetData() {
+            chemistInput.value = "";
+            biologyInput.value = "";
+            archeologyInput.value = "";
+            geologyInput.value = "";
+            physicsInput.value = "";
+            outputSquare.textContent = "Your Output here";
+        }
+        function showData() {
+            var chemist = Number(chemistInput.value);
+            var biology = Number(biologyInput.value);
+            var archeology = Number(archeologyInput.value);
+            var geology = Number(geologyInput.value);
+            var physics = Number(physicsInput.value);
+            var totalMarks = chemist + biology + archeology + geology + physics;
+            //check if input is num or string
+            if (
+                !Number.isInteger(chemist) ||
+                !Number.isInteger(biology) ||
+                !Number.isInteger(archeology) ||
+                !Number.isInteger(geology) ||
+                !Number.isInteger(physics)
+            ) {
+                outputSquare.textContent = "Your Value is not a number or you entered a float number";
+            } else {
+                outputSquare.innerHTML = `
+                    <p>Total Marks: ${totalMarks}</p>
+                    <p>Average: ${totalMarks / 5}</p>
+                    <p>Percentage: ${(totalMarks / 500) * 100}%</p>
+            `;
+            }
+        }
+    </script>
+</body>
+
+</html>
