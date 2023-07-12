@@ -10,9 +10,7 @@ input[type="number"]::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input[type="number"] {
-  -moz-appearance: textfield;
-}
+
 
 .assigns button {
   text-align: start !important;
