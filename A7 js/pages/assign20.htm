@@ -29,16 +29,16 @@
             <div class="col-md-12 d-flex justify-content-center column-gap-3">
                 <div class="row g-2">
                     <div class="col-md-6">
-                        <button class="btn btn-primary btn-lg w-50" id="enterButton" onclick="showDataSum()">+</button>
+                        <button class="btn btn-primary btn-lg w-50" id="enterButton" onclick="showData('+')">+</button>
                     </div>
                     <div class="col-md-6">
-                        <button class="btn btn-primary btn-lg w-50" id="enterButton" onclick="showDataSub()">-</button>
+                        <button class="btn btn-primary btn-lg w-50" id="enterButton" onclick="showData('-')">-</button>
                     </div>
                     <div class="col-md-6">
-                        <button class="btn btn-primary btn-lg w-50" id="enterButton" onclick="showDataMal()">*</button>
+                        <button class="btn btn-primary btn-lg w-50" id="enterButton" onclick="showData('*')">*</button>
                     </div>
                     <div class="col-md-6">
-                        <button class="btn btn-primary btn-lg w-50" id="enterButton" onclick="showDataDiv()">/</button>
+                        <button class="btn btn-primary btn-lg w-50" id="enterButton" onclick="showData('/')">/</button>
                     </div>
                 </div>
                 <button class="btn btn-primary btn-lg" id="resetButton" onclick="resetData()">Clear</button>
@@ -48,38 +48,29 @@
     <script>
         var outputSquare = document.getElementById("outputSquare");
         var res = 0;
-        function showDataSum() {
+        function showData(operator) {
             var firstNumber = document.getElementById("firstNumberInput").value;
             var secondNumber = document.getElementById("secondNumberInput").value;
-            var numOne = Number(firstNumber);
-            var numTwo = Number(secondNumber);
-            res = numOne + numTwo;
-            outputSquare.innerHTML = `Result : => ${res}`;
+            switch (operator) {
+                case '+':
+                    res = Number(firstNumber) + Number(secondNumber);
+                    outputSquare.innerHTML = `Result : => ${res}`;
+                    break;
+                case '-':
+                    res = Number(firstNumber) - Number(secondNumber);
+                    outputSquare.innerHTML = `Result : => ${res}`;
+                    break;
+                case '*':
+                    res = Number(firstNumber) * Number(secondNumber);
+                    outputSquare.innerHTML = `Result : => ${res}`;
+                    break;
+                case '/':
+                    res = Number(firstNumber) / Number(secondNumber);
+                    outputSquare.innerHTML = `Result : => ${res}`;
+                    break;
+            }
         }
-        function showDataSub() {
-            var firstNumber = document.getElementById("firstNumberInput").value;
-            var secondNumber = document.getElementById("secondNumberInput").value;
-            var numOne = Number(firstNumber);
-            var numTwo = Number(secondNumber);
-            res = numOne - numTwo;
-            outputSquare.innerHTML = `Result : => ${res}`;
-        }
-        function showDataMal() {
-            var firstNumber = document.getElementById("firstNumberInput").value;
-            var secondNumber = document.getElementById("secondNumberInput").value;
-            var numOne = Number(firstNumber);
-            var numTwo = Number(secondNumber);
-            res = numOne * numTwo;
-            outputSquare.innerHTML = `Result : => ${res}`;
-        }
-        function showDataDiv() {
-            var firstNumber = document.getElementById("firstNumberInput").value;
-            var secondNumber = document.getElementById("secondNumberInput").value;
-            var numOne = Number(firstNumber);
-            var numTwo = Number(secondNumber);
-            res = numOne / numTwo;
-            outputSquare.innerHTML = `Result : => ${res}`;
-        }
+
         function resetData() {
             document.getElementById("firstNumberInput").value = " ";
             document.getElementById("secondNumberInput").value = " ";
