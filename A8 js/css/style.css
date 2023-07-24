@@ -3,7 +3,7 @@
   border: transparent;
 }
 .btn:hover {
-  background: linear-gradient(35deg, #2ba394, #af2591, #1d92cc, #cc1d5a, #1dcc69);
+  background: linear-gradient(35deg, #2ba394, #8f2466, #1d92cc, #cc1d5a, #1dcc69);
   background-size: 1000% 1000%;
   animation: quote 9s ease infinite;
   border-color: transparent;
@@ -26,7 +26,9 @@
   20% { transform: skewX(0deg); }
   100% { transform: skewX(0deg); }
 }
-
+#quote {
+  line-height: 70px;
+}
 #author {
   color: crimson;
 }
