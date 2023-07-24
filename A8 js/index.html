@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A8 - JS</title>
+    <!-- *LINK - MAIN BOOTSTRAP - FILE -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- *LINK - MAIN CSS - FILE -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="bg-secondary">
+    <div class="container mt-5 py-5 bg-black text-center text-white rounded-5 ">
+        <h1 class="fw-bolder display-2 py-3 mb-5">Quote Generator</h1>
+        <p class="fs-2 fw-bolder mb-5" >Press The Button To Generate a Quote</p>
+        <button class="btn btn-primary btn-lg fw-bold py-4 mb-5"  onclick="generateQuote()">
+            <p class="mb-0 shake">
+                Generate a Quote
+            </p>
+        </button>
+        <div class="row" dir="rtl">
+            <div class="col-12">
+                <div class="content">
+                    <p class="text-capitalize fw-bolder shake fs-2 mb-4" id="quote"></p>
+                    <h3 class="mb-5" id="author"></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- *ANCHOR - MAIN JS - FILE -->
+    <script src="Js/main.js"></script>
+</body>
+
+</html>

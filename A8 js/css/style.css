@@ -1,0 +1,35 @@
+.btn {
+  transition: all 1s;
+  border: transparent;
+}
+.btn:hover {
+  background: linear-gradient(35deg, #2ba394, #af2591, #1d92cc, #cc1d5a, #1dcc69);
+  background-size: 1000% 1000%;
+  animation: quote 9s ease infinite;
+  border-color: transparent;
+}
+
+@keyframes quote {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 51%}
+  100%{background-position:0% 50%}
+}
+
+.btn:hover .shake,.shake:hover {
+  animation: shake 0.5s ;
+}
+@keyframes shake {
+  0% { transform: skewX(-15deg); }
+  5% { transform: skewX(15deg); }
+  10% { transform: skewX(-15deg); }
+  15% { transform: skewX(15deg); }
+  20% { transform: skewX(0deg); }
+  100% { transform: skewX(0deg); }
+}
+
+#author {
+  color: crimson;
+}
+.btn-primary {
+  --bs-btn-bg:crimson;
+}
