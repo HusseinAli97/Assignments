@@ -23,7 +23,7 @@ console.log(indicator);
 function randomIndex(){
     var indexingNum;
     do {
-        // track random numbers if number inside indicator repeat loop and push it in indecator list
+    // ? track random numbers if number inside indicator repeat loop and push it in indecator list
         indexingNum = Math.floor(Math.random() * (quoteGroup.length))
     } while (indicator.includes(indexingNum))
     indicator.push(indexingNum);
