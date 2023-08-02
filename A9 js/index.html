@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CRUD Operation">
+    <title>As 9 js - BookMark</title>
+    <!-- LINK - MAIN Fonts  -->
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&family=Mochiy+Pop+One&display=swap" rel="stylesheet">
+    <!-- LINK - MAIN FontAwesome - FILE  -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <!-- LINK - MAIN CSS-SweetAlert - FILE -->
+    <link rel="stylesheet" href="css/sweetalert2.min.css">
+    <!-- LINK - MAIN BOOTSTRAP - FILE -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- LINK - MAIN CSS - FILE -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-dark">
+    <div class="container mt-5 ">
+        <div class="header py-4 text-white text-center">
+            <h1>BookMark</h1>
+        </div>
+        <div class="content text-center text-white mt-5">
+            <div class="mt-5 subHead d-flex justify-content-center">
+                <span ><i class="fa-solid fa-thumbtack rote fa-2x me-2"></i></span>
+                <h2 class="">Bookmark your favorite sites Site Name</h2>
+            </div>
+            <div class="row text-start inputs">
+                <div class="col-md-12 mb-4">
+                    <label for="siteName" class="form-label">SiteName</label>
+                    <input type="text" class="form-control "  id="siteName">
+                </div>
+                <div class="col-md-12 mb-5">
+                    <label for="siteUrl" class="form-label">SiteUrl</label>
+                    <input type="text" class="form-control vali" id="siteUrl">
+                </div>
+                <div class="col-md-4 mb-3  justify-content-center mt-3 m-auto">
+                    <button type="submit" class="btn btn-danger w-100" id="addBtn">Submit</button>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-12 t-table">
+                    <table class="table table-striped mt-3">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">SiteName</th>
+                                <th scope="col">SiteUrl</th>
+                                <th scope="col">Visit</th>
+                                <th scope="col">Delete</th>
+                                <th scope="col">Add Date</th>
+                                <th scope="col">Last Visit</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                        </tbody>
+            </div>
+        </div>
+    </div>
+</body>
+    <!-- SCRIPT - MAIN JS - FILE -->
+    <script src="Js/sweetalert2.all.min.js"></script>
+    <script src="Js/moment.js"></script>
+    <script src="Js/bootstrap.min.js"></script>
+    <script src="Js/main.js"></script>
+
+</html>

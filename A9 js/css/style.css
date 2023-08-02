@@ -1,0 +1,22 @@
+body {
+    font-family: 'Josefin Sans', sans-serif;
+}
+h1 {
+    font-family: 'Mochiy Pop One', sans-serif;
+}
+
+.header {
+    border-bottom: 1px dashed #fff;
+}
+.subHead:hover .rote{
+    transform: rotate(-45deg);
+}
+.rote {
+    color: orange;
+    transition: transform .5s;
+}
+.t-table {
+    padding-top: 20px;
+    border-top: 1px dashed #fff;
+
+}
