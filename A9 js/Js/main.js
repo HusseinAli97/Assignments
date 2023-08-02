@@ -36,6 +36,7 @@ function addition() {
         name: sName.value,
         url: sUrl.value,
         editDate: currentMoment,
+        visitDate: lastMoment,
     }
     if (checkValidate() === true) {
         bookList.push(bookMarksObject);
@@ -51,27 +52,26 @@ function display(bookMarkShow) {
     var content = "";
     for (var i = 0; i < bookMarkShow.length; i++) {
         content += `
-        <tr >
+        <tr>
         <th scope="row" class="py-3">${i + 1}</th>
-        <td class="py-3 text-uppercase ">${bookMarkShow[i].name}</td>
+        <td class="py-3 text-uppercase">${bookMarkShow[i].name}</td>
         <td class="py-3">${bookMarkShow[i].url}</td>
-        <td >
-            <button class="btn btn-info w-100 visitBtn" visit = ${i}>
+        <td>
+            <button class="btn btn-info w-100 visitBtn" visit=${i}>
                 <i class="fa-solid fa-eye"></i>
             </button>
         </td>
-        <td >
+        <td>
             <button class="btn btn-danger w-100 delBtn" data="${i}">
                 <i class="fa-solid fa-trash"></i>
             </button>
         </td>
         <td class="py-3">${bookMarkShow[i].editDate}</td>
-        <td class="py-3">${bookMarkShow[i].editDate}</td>
-        </tr>
-        
-        `
+        <td class="py-3">${bookMarkShow[i].visitDate || 'Not visited yet'}</td> <!-- Display visit date or "Not visited yet" -->
+        </tr>`;
     }
     tBody.innerHTML = content;
+
     var delBtn = document.querySelectorAll(".delBtn");
     for (var i = 0; i < delBtn.length; i++) {
         delBtn[i].addEventListener('click', (e) => {
@@ -82,13 +82,18 @@ function display(bookMarkShow) {
     var visitBtn = document.querySelectorAll(".visitBtn");
     for (var i = 0; i < visitBtn.length; i++) {
         visitBtn[i].addEventListener('click', (e) => {
-            addAnchorVisit(Number(e.target.getAttribute("visit")));
+            lastMoment = moment().format('YYYY-MM-DD-HH:mm,A');
+            addAnchorVisit(Number(e.target.getAttribute("visit")), lastMoment);
         })
     }
 }
-function addAnchorVisit(index) {
+
+function addAnchorVisit(index, lastVisit) {
+    lastMoment = lastVisit;
+    bookList[index].visitDate = lastMoment; // Update the visit date of the bookmark
+    storeAtLocal(bookList);
+    display(bookList);
     window.open(`https://${bookList[index].url}`, '_blank');
-    
 }
 
 // ************************ Clear Inputs ****************************
