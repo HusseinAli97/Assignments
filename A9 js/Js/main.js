@@ -38,13 +38,60 @@ function addition() {
         editDate: currentMoment,
         visitDate: lastMoment,
     }
+
     if (checkValidate() === true) {
-        bookList.push(bookMarksObject);
-        storeAtLocal(bookList);
-        clearInputs();
-        display(bookList);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be Added!",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, add it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                bookList.push(bookMarksObject);
+                storeAtLocal(bookList);
+                clearInputs();
+                display(bookList);
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 1000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    icon: 'success',
+                    title: 'added successfully'
+                })
+            }
+        })
     } else {
-        alert("invalid valuse");
+        if (!siteNameValidation(sName.value) && !siteUrlValidation(sUrl.value)) {
+            Swal.fire({
+                title: 'Error',
+                text: 'Invalid Url and Name',
+                icon: 'error',
+            })
+        } else if (!siteNameValidation(sName.value)) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Please enter a valid name containing at least 3 characters',
+            })
+        } else if (!siteUrlValidation(sUrl.value)) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Url is required \n',
+                footer: 'Please enter a valid url (http://www.example.com)'
+            })
+        }
     }
 }
 // ********************************Display****************************
@@ -82,7 +129,7 @@ function display(bookMarkShow) {
     var visitBtn = document.querySelectorAll(".visitBtn");
     for (var i = 0; i < visitBtn.length; i++) {
         visitBtn[i].addEventListener('click', (e) => {
-            lastMoment = moment().format('YYYY-MM-DD-HH:mm,A');
+            lastMoment = moment().format('D/M/YYYY,HH:mmA');
             addAnchorVisit(Number(e.target.getAttribute("visit")), lastMoment);
         })
     }
@@ -104,11 +151,38 @@ function clearInputs() {
 // ************************** Delete bookmark ****************************
 
 function deleteCurrent(index) {
-    bookList.splice(index, 1);
-    storeAtLocal(bookList);
-    display(bookList);
+    Swal.fire({
+        icon: 'error',
+        title: 'Delete',
+        text: 'Are you sure you want to delete this bookmark',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            bookList.splice(index, 1);
+            storeAtLocal(bookList);
+            display(bookList);
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 1000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                icon: 'success',
+                title: ' Deleted'
+            })
+        }
+    })
 }
-// ? ************************* Validation ****************************
+// ************************* Validation ****************************
 sName.addEventListener('input', (e) => {
     siteNameValidation(e.target.value);
 })
@@ -120,7 +194,6 @@ function siteNameValidation(nameValue) {
     if (regexName.test(nameValue)) {
         sName.classList.replace("is-invalid", "is-valid");
         return true
-
     } else {
         sName.classList.add("is-invalid");
         return false
