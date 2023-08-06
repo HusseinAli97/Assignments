@@ -180,12 +180,15 @@ signUpFormBtn.addEventListener('click', function() {
         setupLocalStorage(accList);
         showSignIn();
         clearinput();
+        showSuccess("Account created successfully. Please sign in.");
     }
 });
 function clearinput(){
     signUpNameInput.value = "";
     signUpEmailInput.value = "";
     signUpPasswordInput.value = "";
+    emailInput.value = "";
+    passwordInput.value = "";
 }
 function showAlert(message, icon = "error") {
     Swal.fire({
@@ -197,4 +200,45 @@ function showAlert(message, icon = "error") {
         toast: true,
     });
 }
+function showSuccess(message) {
+    Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: message,
+        showConfirmButton: false,
+        timer: 1500
+    })
+
+}
 //? ****************************************************** 3- validate data and add to local storage *** *********************************************
+
+//? ****************************************************** 4- if account is in local storage account list and clicked in sign in move to another page *********************************************
+signInForm.addEventListener('submit', function (e) {
+    e.preventDefault(); 
+    const enteredEmail = emailInput.value.trim();
+    const enteredPassword = passwordInput.value;
+
+    if (validateSignIn(enteredEmail, enteredPassword)) {
+        showSuccess("Successfully signed in!");
+    }
+});
+
+function validateSignIn(enteredEmail, enteredPassword) {
+    const account = accList.find(account => account.email === enteredEmail);
+
+    if (!account) {
+        showAlert("Email not found. Please check your email.");
+        emailInput.classList.add('is-invalid');
+        return false;
+    }
+
+    if (account.password !== enteredPassword) {
+        showAlert("Incorrect password. Please check your password.");
+        passwordInput.classList.add('is-invalid');
+        return false;
+    }
+    clearinput();
+    emailInput.classList.remove('is-invalid');
+    passwordInput.classList.remove('is-invalid');
+    return true;
+}
