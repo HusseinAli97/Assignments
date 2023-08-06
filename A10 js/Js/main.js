@@ -11,6 +11,7 @@ let container = document.querySelector('.mainSection');
 let backToSignIn = document.getElementById('backToSignIn');
 let localStorageKey = 'accountList'; ;
 let accList = [];
+let storeData = [];
 
 // ****************************************************Site Structure****************************************************
 //! 0 - up and down transition methods
@@ -19,8 +20,9 @@ let accList = [];
 //!                 -in sign up validate data and add to local storage      -in sign in validate data and check if account is in local storage account list
 //!         - make set local storage function
 //! 2- run time check on sign up or sign in
-//! 3- if account is in local storage account list and clicked in sign in move to another page
-//! 4- in sign up after pass validation move to sign in
+//! 3- validate data and add to local storage
+//! 4- if account is in local storage account list and clicked in sign in move to another page
+//! 5- in sign up after pass validation move to sign in
 // **********************************************************************************************************************
 //? *********************************************** 0 - up and down transition methods *********************************************
 signUpBtn.addEventListener('click', function () {
@@ -36,6 +38,8 @@ function showSignIn() {
     signUpForm.classList.remove('moveUpSignUp');
     signInForm.classList.remove('moveDownSignIn');
     signUpForm.classList.replace('delay-1', 'transition-Delay');
+    signUpBtn.classList.remove('d-none');
+    backToSignIn.classList.add('d-none');
 }
 function showSignUp() {
     signInForm.classList.add('moveDownSignIn');
@@ -63,3 +67,134 @@ function setupLocalStorage(accounts) {
 
 
 //? *********************************************** 2- run time check on sign up or sign in *********************************************
+signUpNameInput.addEventListener('focusout', function () {
+    validName();
+})
+signUpEmailInput.addEventListener('focusout', function () {
+    validEmail();
+})
+signUpPasswordInput.addEventListener('keyup', function () {
+    validPassword();
+})
+
+//? ****************************************************** 3- validate data and add to local storage *********************************************
+function validName() {
+    const regexName = /^[A-Z][a-zA-Z]{3,}$/g;
+    const enteredName = signUpNameInput.value.trim();
+
+    if (!enteredName) {
+        showAlert("Name field cannot be empty.");
+        signUpNameInput.classList.add('is-invalid');
+        return false;
+    }
+
+    if (!regexName.test(enteredName)) {
+        showAlert("Invalid name format. Name must start with an uppercase letter and be at least 4 characters long.");
+        signUpNameInput.classList.add('is-invalid');
+        return false;
+    }
+
+    if (accList.some(account => account.name === enteredName)) {
+        showAlert("This name is already taken. Please choose a different one.");
+        signUpNameInput.classList.add('is-invalid');
+        return false;
+    }
+
+    if(signUpNameInput.classList.contains('is-invalid')){
+        signUpNameInput.classList.remove('is-invalid');
+        
+    }else{
+        signUpNameInput.classList.add('is-valid');
+    }
+    return true;
+}
+
+function validEmail() {
+    const regexEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const enteredEmail = signUpEmailInput.value.trim();
+
+    if (!enteredEmail) {
+        showAlert("Email field cannot be empty.");
+        signUpEmailInput.classList.add('is-invalid');
+        return false;
+    }
+
+    if (!regexEmail.test(enteredEmail)) {
+        showAlert("Invalid email format. Please enter a valid email address.");
+        signUpEmailInput.classList.add('is-invalid');
+        return false;
+    }
+
+    if (accList.some(account => account.email === enteredEmail)) {
+        showAlert("This email is already registered. Please use a different email.");
+        signUpEmailInput.classList.add('is-invalid');
+        return false;
+    }
+
+    if (signUpEmailInput.classList.contains('is-invalid')) {
+        signUpEmailInput.classList.remove('is-invalid');
+    } else {
+        signUpEmailInput.classList.add('is-valid');
+    }
+    return true;
+    
+}
+
+
+function validPassword(){
+    /*
+    - at least 8 characters
+    - must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number
+    - must contain at least 1 special character
+    - must contain at least 1 non-alphanumeric
+     */
+    const regexPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm;
+    if(regexPassword.test(signUpPasswordInput.value) && signUpPasswordInput.value !== ""  ){
+        signUpPasswordInput.classList.replace('is-invalid', 'is-valid');
+        return true;
+    }else{
+        signUpPasswordInput.classList.add('is-invalid');
+        return false;
+    }
+}
+function validForm() {
+    return validName() && validEmail() && validPassword() && isUniqueName() && isUniqueEmail();
+}
+function isUniqueName() {
+    const enteredName = signUpNameInput.value;
+    return !accList.some(account => account.name === enteredName);
+}
+
+function isUniqueEmail() {
+    const enteredEmail = signUpEmailInput.value;
+    return !accList.some(account => account.email === enteredEmail);
+}
+
+signUpFormBtn.addEventListener('click', function() {
+    if (validForm() && isUniqueName() && isUniqueEmail()) {
+        accList.push({
+            name: signUpNameInput.value,
+            email: signUpEmailInput.value,
+            password: signUpPasswordInput.value
+        });
+        setupLocalStorage(accList);
+        showSignIn();
+        clearinput();
+    }
+});
+function clearinput(){
+    signUpNameInput.value = "";
+    signUpEmailInput.value = "";
+    signUpPasswordInput.value = "";
+}
+function showAlert(message, icon = "error") {
+    Swal.fire({
+        icon: icon,
+        text: message,
+        position: "bottom-start",
+        showConfirmButton: false,
+        timer: 3000, // Duration of the toast
+        toast: true,
+    });
+}
+//? ****************************************************** 3- validate data and add to local storage *** *********************************************
