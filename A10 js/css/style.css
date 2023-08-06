@@ -1,0 +1,43 @@
+body {
+    font-family: 'Josefin Sans', sans-serif;
+    height: 100vh;
+}
+
+.mainSection {
+    background-image: url("../img/bg.jpg");
+    background-size: cover;
+    background-position: center;
+    min-height: 75%;
+    width: 65%;
+    overflow: hidden;
+}
+.mainMoveSignUp{
+    position: absolute;
+    top: 150%;
+}
+.moveUpSignUp{
+    top: 50%;
+    transform: translateY(-50%);
+}
+.mainMoveSignIn{
+    position: relative;
+    bottom: 0;
+}
+.transition-Delay{
+    transition: all 0.5s ease;
+}
+.moveDownSignIn{
+    bottom: -150%;
+}
+.delay-1{
+    transition: all 0.5s .5s ease;
+}
+.moveUpSignIn{
+    bottom: 0;
+}
+.form-floating>.form-control-plaintext~label::after, .form-floating>.form-control:focus~label::after, .form-floating>.form-control:not(:placeholder-shown)~label::after, .form-floating>.form-select~label::after{
+    background-color: transparent;
+}
+.form-floating>.form-control-plaintext~label, .form-floating>.form-control:focus~label, .form-floating>.form-control:not(:placeholder-shown)~label, .form-floating>.form-select~label {
+    color: white;
+}
