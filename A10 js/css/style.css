@@ -122,7 +122,7 @@ h1 {
     color: white;
 }
 
-.loading-screen {
+#loadingScreen {
     position: fixed;
     top: 0;
     left: 0;
@@ -135,24 +135,65 @@ h1 {
     z-index: 1000;
 }
 
-.spinner {
-    border: 4px solid rgba(255, 255, 255, 0.3);
-    border-top: 4px solid white;
+.loading-screen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    animation: spin 1s linear infinite;
+    height: 96px;
+    width: 96px;
+    animation: rotate_3922 1.2s linear infinite;
+    background-color: #0e0213;
+    background-image: linear-gradient(#9b59b6, #84cdfa, #5ad1cd);
 }
 
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
+.loading-screen span {
+    position: absolute;
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    background-color: #9b59b6;
+    background-image: linear-gradient(#9b59b6, #84cdfa, #5ad1cd);
+}
+
+.loading-screen span:nth-of-type(1) {
+    filter: blur(5px);
+}
+
+.loading-screen span:nth-of-type(2) {
+    filter: blur(10px);
+}
+
+.loading-screen span:nth-of-type(3) {
+    filter: blur(25px);
+}
+
+.loading-screen span:nth-of-type(4) {
+    filter: blur(50px);
+}
+
+.loading-screen::after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    background-color: #0d010198;
+    border: solid 5px #0d010198;
+    border-radius: 50%;
+}
+
+@keyframes rotate_3922 {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
     }
 
-    100% {
-        transform: rotate(360deg);
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
     }
 }
+
 
 .form-select:focus,
 .form-control:focus {
