@@ -64,6 +64,13 @@ function showSignUp() {
 function setupLocalStorage(accounts) {
     localStorage.setItem(localStorageKey, JSON.stringify(accounts));
 }
+function setupEmail(email) {
+    localStorage.setItem('isLoggedInEmail', email);
+}
+(function(){
+    if (localStorage.getItem('isLoggedInEmail') !== null) {
+        showLoadingScreen();
+}})();
 //? *********************************************** 1 - check if local storage is empty *** *********************************************
 
 
@@ -181,7 +188,7 @@ signUpFormBtn.addEventListener('click', function() {
         setupLocalStorage(accList);
         showSignIn();
         clearInput();
-        showSuccess("Account created successfully. Please sign in.");
+        showAlert("Successfully signed up!", "success");
     }
 });
 function clearInput(){
@@ -195,7 +202,7 @@ function showAlert(message, icon = "error") {
     Swal.fire({
         icon: icon,
         text: message,
-        position: "bottom-start",
+        position: "bottom",
         showConfirmButton: false,
         timer: 3000, // Duration of the toast
         toast: true,
@@ -203,7 +210,6 @@ function showAlert(message, icon = "error") {
 }
 function showSuccess(message) {
     Swal.fire({
-        position: 'top-end',
         icon: 'success',
         title: message,
         showConfirmButton: false,
@@ -221,12 +227,9 @@ loginMainForm.addEventListener('submit', function (e) {
 
     if (validateSignIn(enteredEmail, enteredPassword)) {
         showSuccess("Successfully signed in!");
-        clearInput();
+        setupEmail(enteredEmail);
         container.classList.replace('d-flex', 'd-none');
         showLoadingScreen();
-        setTimeout(function() {
-        window.location.href = "../CRUD/index.html"; 
-    }, 2000);
     }
 });
 
@@ -252,4 +255,7 @@ function validateSignIn(enteredEmail, enteredPassword) {
 function showLoadingScreen() {
     const loadingScreen = document.getElementById('loadingScreen');
     loadingScreen.classList.replace('d-none', 'd-flex');
+    setTimeout(function() {
+        window.location.href = "../CRUD/index.html"; 
+    }, 2000);
 }
