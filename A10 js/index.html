@@ -8,9 +8,8 @@
     <meta name="description" content="Login System">
     <title>As 10 js - Login</title>
     <!-- LINK - MAIN Fonts  -->
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&family=Mochiy+Pop+One&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Josefin+Sans:wght@600&display=swap"
         rel="stylesheet">
-    <!-- LINK - MAIN FontAwesome - FILE  -->
     <link rel="stylesheet" href="css/all.min.css">
     <!-- LINK - MAIN CSS-SweetAlert - FILE -->
     <link rel="stylesheet" href="css/sweetalert2.min.css">
@@ -20,17 +19,18 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="bg-dark d-flex justify-content-center align-items-center">
+<body class="d-flex justify-content-center align-items-center">
     <div class="loading-screen d-none" id="loadingScreen">
         <div class="spinner"></div>
     </div>
-    <section class=" mainSection text-white d-flex justify-content-end">
+    <section class=" mainSection text-white w-75 d-flex justify-content-end">
+        <div class="w-100 bg-black wall"></div>
         <div
-            class=" w-50 text-center d-flex flex-column bg-black ms-auto justify-content-center align-items-center position-relative">
+            class=" container w-50 text-center d-flex flex-column loginWrapper ms-auto justify-content-center align-items-center position-relative">
             <div class="row  w-75 mainMoveSignIn transition-Delay" id="signInForm">
                 <div class="col-12">
                     <div class="login">
-                        <form  method="post" id="loginMainForm">
+                        <form method="post" id="loginMainForm">
                             <h1 class="text-uppercase fw-bold mb-4">Login</h1>
                             <div class="form-group mb-4">
                                 <div class="form-floating">
@@ -56,7 +56,7 @@
             <div class="                        
             position-absolute 
             bottom-0 start-50
-            w-50 translate-middle-x">
+            w-50 translate-middle-x py-4">
                 <div class="row">
                     <div class="col-md-12">
                         <a href="#" class="

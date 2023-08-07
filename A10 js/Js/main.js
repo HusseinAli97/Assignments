@@ -10,7 +10,7 @@ let signUpFormBtn = document.getElementById('signUpFormBtn');
 let container = document.querySelector('.mainSection');
 let backToSignIn = document.getElementById('backToSignIn');
 let loginMainForm = document.getElementById('loginMainForm');
-let localStorageKey = 'accountList'; ;
+let localStorageKey = 'accountList';;
 let accList = [];
 let storeData = [];
 
@@ -56,7 +56,7 @@ function showSignUp() {
     if (localStorage.getItem(localStorageKey) !== null) {
         accList = JSON.parse(localStorage.getItem(localStorageKey));
         showSignIn();
-    }else{
+    } else {
         showSignUp();
     }
 })();
@@ -67,10 +67,11 @@ function setupLocalStorage(accounts) {
 function setupEmail(email) {
     localStorage.setItem('isLoggedInEmail', email);
 }
-(function(){
+(function () {
     if (localStorage.getItem('isLoggedInEmail') !== null) {
         showLoadingScreen();
-}})();
+    }
+})();
 //? *********************************************** 1 - check if local storage is empty *** *********************************************
 
 
@@ -108,10 +109,10 @@ function validName() {
         return false;
     }
 
-    if(signUpNameInput.classList.contains('is-invalid')){
+    if (signUpNameInput.classList.contains('is-invalid')) {
         signUpNameInput.classList.remove('is-invalid');
-        
-    }else{
+
+    } else {
         signUpNameInput.classList.add('is-valid');
     }
     return true;
@@ -145,11 +146,11 @@ function validEmail() {
         signUpEmailInput.classList.add('is-valid');
     }
     return true;
-    
+
 }
 
 
-function validPassword(){
+function validPassword() {
     /*
     - at least 8 characters
     - must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number
@@ -157,10 +158,10 @@ function validPassword(){
     - must contain at least 1 non-alphanumeric
      */
     const regexPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm;
-    if(regexPassword.test(signUpPasswordInput.value) && signUpPasswordInput.value !== ""  ){
+    if (regexPassword.test(signUpPasswordInput.value) && signUpPasswordInput.value !== "") {
         signUpPasswordInput.classList.replace('is-invalid', 'is-valid');
         return true;
-    }else{
+    } else {
         signUpPasswordInput.classList.add('is-invalid');
         return false;
     }
@@ -178,7 +179,7 @@ function isUniqueEmail() {
     return !accList.some(account => account.email === enteredEmail);
 }
 
-signUpFormBtn.addEventListener('click', function() {
+signUpFormBtn.addEventListener('click', function () {
     if (validForm() && isUniqueName() && isUniqueEmail()) {
         accList.push({
             name: signUpNameInput.value,
@@ -191,7 +192,7 @@ signUpFormBtn.addEventListener('click', function() {
         showAlert("Successfully signed up!", "success");
     }
 });
-function clearInput(){
+function clearInput() {
     signUpNameInput.value = "";
     signUpEmailInput.value = "";
     signUpPasswordInput.value = "";
@@ -221,14 +222,14 @@ function showSuccess(message) {
 
 //? ****************************************************** 4- if account is in local storage account list and clicked in sign in move to another page *********************************************
 loginMainForm.addEventListener('submit', function (e) {
-    e.preventDefault(); 
+    e.preventDefault();
     const enteredEmail = emailInput.value.trim();
     const enteredPassword = passwordInput.value;
 
     if (validateSignIn(enteredEmail, enteredPassword)) {
-        showSuccess("Successfully signed in!");
+        showAlert("Successfully signed in!", "success");
         setupEmail(enteredEmail);
-        container.classList.replace('d-flex', 'd-none');
+        container.classList.add('invisible');
         showLoadingScreen();
     }
 });
@@ -255,7 +256,7 @@ function validateSignIn(enteredEmail, enteredPassword) {
 function showLoadingScreen() {
     const loadingScreen = document.getElementById('loadingScreen');
     loadingScreen.classList.replace('d-none', 'd-flex');
-    setTimeout(function() {
-        window.location.href = "../CRUD/index.html"; 
+    setTimeout(function () {
+        window.location.href = "../CRUD/index.html";
     }, 2000);
 }
