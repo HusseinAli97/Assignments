@@ -9,6 +9,7 @@ let signUpBtn = document.getElementById('signUp');
 let signUpFormBtn = document.getElementById('signUpFormBtn');
 let container = document.querySelector('.mainSection');
 let backToSignIn = document.getElementById('backToSignIn');
+let loginMainForm = document.getElementById('loginMainForm');
 let localStorageKey = 'accountList'; ;
 let accList = [];
 let storeData = [];
@@ -179,11 +180,11 @@ signUpFormBtn.addEventListener('click', function() {
         });
         setupLocalStorage(accList);
         showSignIn();
-        clearinput();
+        clearInput();
         showSuccess("Account created successfully. Please sign in.");
     }
 });
-function clearinput(){
+function clearInput(){
     signUpNameInput.value = "";
     signUpEmailInput.value = "";
     signUpPasswordInput.value = "";
@@ -213,13 +214,19 @@ function showSuccess(message) {
 //? ****************************************************** 3- validate data and add to local storage *** *********************************************
 
 //? ****************************************************** 4- if account is in local storage account list and clicked in sign in move to another page *********************************************
-signInForm.addEventListener('submit', function (e) {
+loginMainForm.addEventListener('submit', function (e) {
     e.preventDefault(); 
     const enteredEmail = emailInput.value.trim();
     const enteredPassword = passwordInput.value;
 
     if (validateSignIn(enteredEmail, enteredPassword)) {
         showSuccess("Successfully signed in!");
+        clearInput();
+        container.classList.replace('d-flex', 'd-none');
+        showLoadingScreen();
+        setTimeout(function() {
+        window.location.href = "../CRUD/index.html"; 
+    }, 2000);
     }
 });
 
@@ -237,8 +244,12 @@ function validateSignIn(enteredEmail, enteredPassword) {
         passwordInput.classList.add('is-invalid');
         return false;
     }
-    clearinput();
+    clearInput();
     emailInput.classList.remove('is-invalid');
     passwordInput.classList.remove('is-invalid');
     return true;
+}
+function showLoadingScreen() {
+    const loadingScreen = document.getElementById('loadingScreen');
+    loadingScreen.classList.replace('d-none', 'd-flex');
 }
