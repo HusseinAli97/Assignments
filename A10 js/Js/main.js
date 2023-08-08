@@ -53,6 +53,7 @@ function showSignIn() {
     signUpForm.classList.replace('delay-1', 'transition-Delay');
     signUpBtn.classList.remove('d-none');
     backToSignIn.classList.add('d-none');
+    clearInput();
 }
 function showSignUp() {
     signInForm.classList.add('moveDownSignIn');
@@ -60,6 +61,7 @@ function showSignUp() {
     signUpForm.classList.replace('transition-Delay', 'delay-1');
     signUpBtn.classList.add('d-none');
     backToSignIn.classList.remove('d-none');
+    clearInput();
 }
 //? *********************************************** 1 - check local storage *********************************************
 //NOTE - INitialize local storage
@@ -140,17 +142,21 @@ function validEmail() {
 
 function validPassword() {
     /*
-    - at least 8 characters
-    - must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number
-    - must contain at least 1 special character
-    - must contain at least 1 non-alphanumeric
+- at least 8 characters
+- must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number
+- Can contain special characters
      */
     const regexPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm;
+    const wrongValues = document.getElementById('wrongValues');
     if (regexPassword.test(signUpPasswordInput.value) && signUpPasswordInput.value !== "") {
         signUpPasswordInput.classList.replace('is-invalid', 'is-valid');
+        wrongValues.classList.replace('d-block', 'd-none');
         return true;
     } else {
         signUpPasswordInput.classList.add('is-invalid');
+        wrongValues.classList.replace('d-none', 'd-block');
+        wrongValues.classList.add('animate')
+
         return false;
     }
 }
@@ -160,7 +166,7 @@ function validForm() {
 
 signUpFormBtn.addEventListener('click', handleSignUpFormSubmission);
 function handleSignUpFormSubmission() {
-    if (validForm() && isUniqueName() && isUniqueEmail()) {
+    if (validForm()) {
         accList.push({
             name: signUpNameInput.value,
             email: signUpEmailInput.value,
@@ -187,6 +193,13 @@ function clearInput() {
     signUpPasswordInput.value = "";
     emailInput.value = "";
     passwordInput.value = "";
+    signUpNameInput.classList.remove('is-valid');
+    signUpEmailInput.classList.remove('is-valid');
+    signUpPasswordInput.classList.remove('is-valid');
+    signUpNameInput.classList.remove('is-invalid');
+    signUpEmailInput.classList.remove('is-invalid');
+    signUpPasswordInput.classList.remove('is-invalid');
+    wrongValues.classList.replace('d-block','d-none');
 }
 function showAlert(message, icon = "error") {
     Swal.fire({
