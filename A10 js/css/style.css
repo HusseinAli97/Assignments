@@ -1,29 +1,33 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Josefin Sans', sans-serif, 'Helvetica', sans-serif;
     height: 100vh;
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, .3), rgba(52, 19, 199, 0.3)), url('../img/bgss.jpg');
-    ;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(52, 19, 199, 0.3)), url('../img/bgss.jpg');
     background-size: cover;
     background-position: center;
 }
 
 .mainSection {
-    background-image: linear-gradient(to bottom, rgba(107, 105, 105, 0.057), rgba(52, 19, 199, 0.3)), url('../img/bgss.jpg');
+    background-image: linear-gradient(to bottom, rgba(26, 25, 25, 0.387), rgba(52, 19, 199, 0.3)), url('../img/bgss.jpg');
     background-position: center;
     background-size: cover;
     min-height: 75%;
     overflow: hidden;
     box-shadow: 1px 0px 12px 0.5rem rgba(197, 13, 253, 0.144);
-    border-bottom-left-radius: 50px;
-    border-top-right-radius: 50px;
+    border-radius: 50px 0 50px 50px;
     position: relative;
     z-index: 1;
 }
-
 @media (max-width: 767px) {
     .loginWrapper {
         width: 100% !important;
-        border-radius: none;
+        border-radius: 0;
     }
 
     .mainSection {
@@ -41,10 +45,39 @@ body {
     }
 }
 
+@media (min-width: 768px) {
+    .loginWrapper {
+        width: 60% !important;
+        border-radius: 5px !important;
+    }
+
+    .mainSection {
+        border-radius: 55px !important;
+        background-color: transparent;
+    }
+
+    .wall {
+        width: 40% !important;
+    }
+
+}
+@media (min-width: 992px) {
+    .wall {
+        width: 60% !important;
+    }
+}
+
+@media (min-width: 1300px) {
+    .wall {
+        width: 100% !important;
+    }
+}
+
 .wall {
     background-image: linear-gradient(to bottom, rgba(107, 105, 105, 0.057), rgba(52, 19, 199, 0.3)), url('../img/bgss.jpg');
     ;
     background-size: cover;
+    position: relative;
 }
 
 h1 {
@@ -135,65 +168,154 @@ h1 {
     z-index: 1000;
 }
 
-.loading-screen {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    border-radius: 50%;
-    height: 96px;
-    width: 96px;
-    animation: rotate_3922 1.2s linear infinite;
-    background-color: #0e0213;
-    background-image: linear-gradient(#9b59b6, #84cdfa, #5ad1cd);
+.loader {
+    scale: 3;
+    height: 50px;
+    width: 40px;
 }
 
-.loading-screen span {
-    position: absolute;
-    border-radius: 50%;
-    height: 100%;
-    width: 100%;
-    background-color: #9b59b6;
-    background-image: linear-gradient(#9b59b6, #84cdfa, #5ad1cd);
-}
-
-.loading-screen span:nth-of-type(1) {
-    filter: blur(5px);
-}
-
-.loading-screen span:nth-of-type(2) {
-    filter: blur(10px);
-}
-
-.loading-screen span:nth-of-type(3) {
-    filter: blur(25px);
-}
-
-.loading-screen span:nth-of-type(4) {
-    filter: blur(50px);
-}
-
-.loading-screen::after {
-    content: "";
-    position: absolute;
-    top: 10px;
+.box {
+    position: relative;
+    opacity: 0;
     left: 10px;
-    right: 10px;
-    bottom: 10px;
-    background-color: #0d010198;
-    border: solid 5px #0d010198;
-    border-radius: 50%;
 }
 
-@keyframes rotate_3922 {
-    from {
-        transform: translate(-50%, -50%) rotate(0deg);
+.side-left {
+    position: absolute;
+    background-color: #572e64;
+    width: 19px;
+    height: 5px;
+    transform: skew(0deg, -25deg);
+    top: 14px;
+    left: 10px;
+}
+
+.side-right {
+    position: absolute;
+    background-color: #592a6bf7;
+    width: 19px;
+    height: 5px;
+    transform: skew(0deg, 25deg);
+    top: 14px;
+    left: -9px;
+}
+
+.side-top {
+    position: absolute;
+    background-color: #7617e2;
+    width: 20px;
+    height: 20px;
+    rotate: 45deg;
+    transform: skew(-20deg, -20deg);
+}
+
+.box-1 {
+    animation: from-left 4s infinite;
+}
+
+.box-2 {
+    animation: from-right 4s infinite;
+    animation-delay: 1s;
+}
+
+.box-3 {
+    animation: from-left 4s infinite;
+    animation-delay: 2s;
+}
+
+.box-4 {
+    animation: from-right 4s infinite;
+    animation-delay: 3s;
+}
+
+@keyframes from-left {
+    0% {
+        z-index: 20;
+        opacity: 0;
+        translate: -20px -6px;
     }
 
-    to {
-        transform: translate(-50%, -50%) rotate(360deg);
+    20% {
+        z-index: 10;
+        opacity: 1;
+        translate: 0px 0px;
+    }
+
+    40% {
+        z-index: 9;
+        translate: 0px 4px;
+    }
+
+    60% {
+        z-index: 8;
+        translate: 0px 8px;
+    }
+
+    80% {
+        z-index: 7;
+        opacity: 1;
+        translate: 0px 12px;
+    }
+
+    100% {
+        z-index: 5;
+        translate: 0px 30px;
+        opacity: 0;
     }
 }
 
+@keyframes from-right {
+    0% {
+        z-index: 20;
+        opacity: 0;
+        translate: 20px -6px;
+    }
+
+    20% {
+        z-index: 10;
+        opacity: 1;
+        translate: 0px 0px;
+    }
+
+    40% {
+        z-index: 9;
+        translate: 0px 4px;
+    }
+
+    60% {
+        z-index: 8;
+        translate: 0px 8px;
+    }
+
+    80% {
+        z-index: 7;
+        opacity: 1;
+        translate: 0px 12px;
+    }
+    100% {
+        z-index: 5;
+        translate: 0px 30px;
+        opacity: 0;
+    }
+}
+.homeBanner {
+    position: absolute;
+    animation: upDow  2s infinite alternate ;
+    filter:hue-rotate(40deg);
+    animation: upDown  2s infinite alternate ;
+}
+.homeBanner img {
+    min-width: 50rem;
+    max-width: 30rem;
+}
+@keyframes upDown {
+    0% {
+        margin: 25px 0;
+    }
+    100% {
+        margin: -25px 0;
+    }
+}    
 
 .form-select:focus,
 .form-control:focus {
@@ -201,10 +323,8 @@ h1 {
     outline: 0;
     box-shadow: 1px 0px 12px 0.5rem rgb(195 13 253 / 22%);
 }
-
 .form-control {
     border-color: #871c9aa9;
-
 }
 
 div:where(.swal2-container) button:where(.swal2-styled).swal2-default-outline:focus {
@@ -228,7 +348,6 @@ div:where(.swal2-container).swal2-center>.swal2-popup {
     --bs-btn-border-color: #7617e279;
     --bs-btn-hover-border-color: #871c9aa9;
     --bs-btn-hover-bg: transparent;
-
 }
 
 .loginWrapper {

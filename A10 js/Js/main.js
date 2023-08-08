@@ -1,18 +1,22 @@
-let emailInput = document.getElementById("email");
-let passwordInput = document.getElementById("password");
-let signUpNameInput = document.getElementById("signUpName");
-let signUpEmailInput = document.getElementById("signUpEmail");
-let signUpPasswordInput = document.getElementById("signUpPassword");
-let signInForm = document.getElementById("signInForm");
-let signUpForm = document.getElementById("signUpForm");
-let signUpBtn = document.getElementById('signUp');
-let signUpFormBtn = document.getElementById('signUpFormBtn');
-let container = document.querySelector('.mainSection');
-let backToSignIn = document.getElementById('backToSignIn');
-let loginMainForm = document.getElementById('loginMainForm');
-let localStorageKey = 'accountList';;
+//NOTE - Elements
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
+const signUpNameInput = document.getElementById("signUpName");
+const signUpEmailInput = document.getElementById("signUpEmail");
+const signUpPasswordInput = document.getElementById("signUpPassword");
+const signInForm = document.getElementById("signInForm");
+const signUpForm = document.getElementById("signUpForm");
+const signUpBtn = document.getElementById('signUp');
+const signUpFormBtn = document.getElementById('signUpFormBtn');
+const container = document.querySelector('.mainSection');
+const backToSignIn = document.getElementById('backToSignIn');
+const loginMainForm = document.getElementById('loginMainForm');
+
+//NOTE - Local Storage Key
+const localStorageKey = 'accountList';;
+
+//NOTE - Account List
 let accList = [];
-let storeData = [];
 
 // ****************************************************Site Structure****************************************************
 //! 0 - up and down transition methods
@@ -25,16 +29,24 @@ let storeData = [];
 //! 4- if account is in local storage account list and clicked in sign in move to another page
 //! 5- in sign up after pass validation move to sign in
 // **********************************************************************************************************************
-//? *********************************************** 0 - up and down transition methods *********************************************
+//? *********************************************** Event Listeners *********************************************
 signUpBtn.addEventListener('click', function () {
     showSignUp();
 });
-
 backToSignIn.addEventListener('click', function () {
     showSignIn();
-    signUpBtn.classList.remove('d-none');
-    backToSignIn.classList.add('d-none');
 });
+signUpNameInput.addEventListener('focusout', function () {
+    validName();
+})
+signUpEmailInput.addEventListener('focusout', function () {
+    validEmail();
+})
+signUpPasswordInput.addEventListener('keyup', function () {
+    validPassword();
+})
+
+//? *********************************************** 0 - up and down transition methods *********************************************
 function showSignIn() {
     signUpForm.classList.remove('moveUpSignUp');
     signInForm.classList.remove('moveDownSignIn');
@@ -49,9 +61,9 @@ function showSignUp() {
     signUpBtn.classList.add('d-none');
     backToSignIn.classList.remove('d-none');
 }
-//? ***********************************************  0 - up and down transition methods *** *********************************************
+//? *********************************************** 1 - check local storage *********************************************
+//NOTE - INitialize local storage
 
-//? *********************************************** 1 - check if local storage is empty *********************************************
 (function () {
     if (localStorage.getItem(localStorageKey) !== null) {
         accList = JSON.parse(localStorage.getItem(localStorageKey));
@@ -72,46 +84,28 @@ function setupEmail(email) {
         showLoadingScreen();
     }
 })();
-//? *********************************************** 1 - check if local storage is empty *** *********************************************
-
-
-//? *********************************************** 2- run time check on sign up or sign in *********************************************
-signUpNameInput.addEventListener('focusout', function () {
-    validName();
-})
-signUpEmailInput.addEventListener('focusout', function () {
-    validEmail();
-})
-signUpPasswordInput.addEventListener('keyup', function () {
-    validPassword();
-})
 
 //? ****************************************************** 3- validate data and add to local storage *********************************************
 function validName() {
     const regexName = /^[A-Z][a-zA-Z]{3,}$/g;
     const enteredName = signUpNameInput.value.trim();
-
     if (!enteredName) {
         showAlert("Name field cannot be empty.");
         signUpNameInput.classList.add('is-invalid');
         return false;
     }
-
     if (!regexName.test(enteredName)) {
         showAlert("Invalid name format. Name must start with an uppercase letter and be at least 4 characters long.");
         signUpNameInput.classList.add('is-invalid');
         return false;
     }
-
     if (accList.some(account => account.name === enteredName)) {
         showAlert("This name is already taken. Please choose a different one.");
         signUpNameInput.classList.add('is-invalid');
         return false;
     }
-
     if (signUpNameInput.classList.contains('is-invalid')) {
         signUpNameInput.classList.remove('is-invalid');
-
     } else {
         signUpNameInput.classList.add('is-valid');
     }
@@ -121,34 +115,28 @@ function validName() {
 function validEmail() {
     const regexEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     const enteredEmail = signUpEmailInput.value.trim();
-
     if (!enteredEmail) {
         showAlert("Email field cannot be empty.");
         signUpEmailInput.classList.add('is-invalid');
         return false;
     }
-
     if (!regexEmail.test(enteredEmail)) {
         showAlert("Invalid email format. Please enter a valid email address.");
         signUpEmailInput.classList.add('is-invalid');
         return false;
     }
-
     if (accList.some(account => account.email === enteredEmail)) {
         showAlert("This email is already registered. Please use a different email.");
         signUpEmailInput.classList.add('is-invalid');
         return false;
     }
-
     if (signUpEmailInput.classList.contains('is-invalid')) {
         signUpEmailInput.classList.remove('is-invalid');
     } else {
         signUpEmailInput.classList.add('is-valid');
     }
     return true;
-
 }
-
 
 function validPassword() {
     /*
@@ -169,17 +157,9 @@ function validPassword() {
 function validForm() {
     return validName() && validEmail() && validPassword() && isUniqueName() && isUniqueEmail();
 }
-function isUniqueName() {
-    const enteredName = signUpNameInput.value;
-    return !accList.some(account => account.name === enteredName);
-}
 
-function isUniqueEmail() {
-    const enteredEmail = signUpEmailInput.value;
-    return !accList.some(account => account.email === enteredEmail);
-}
-
-signUpFormBtn.addEventListener('click', function () {
+signUpFormBtn.addEventListener('click', handleSignUpFormSubmission);
+function handleSignUpFormSubmission() {
     if (validForm() && isUniqueName() && isUniqueEmail()) {
         accList.push({
             name: signUpNameInput.value,
@@ -191,7 +171,16 @@ signUpFormBtn.addEventListener('click', function () {
         clearInput();
         showAlert("Successfully signed up!", "success");
     }
-});
+}
+//? ****************************************************** Helper functions *********************************************
+function isUniqueName() {
+    const enteredName = signUpNameInput.value;
+    return !accList.some(account => account.name === enteredName);
+}
+function isUniqueEmail() {
+    const enteredEmail = signUpEmailInput.value;
+    return !accList.some(account => account.email === enteredEmail);
+}
 function clearInput() {
     signUpNameInput.value = "";
     signUpEmailInput.value = "";
@@ -216,9 +205,7 @@ function showSuccess(message) {
         showConfirmButton: false,
         timer: 1500
     })
-
 }
-//? ****************************************************** 3- validate data and add to local storage *** *********************************************
 
 //? ****************************************************** 4- if account is in local storage account list and clicked in sign in move to another page *********************************************
 loginMainForm.addEventListener('submit', function (e) {
@@ -234,15 +221,21 @@ loginMainForm.addEventListener('submit', function (e) {
     }
 });
 
+function showLoadingScreen() {
+    const loadingScreen = document.getElementById('loadingScreen');
+    loadingScreen.classList.replace('d-none', 'd-flex');
+    setTimeout(function () {
+        window.location.href = "../CRUD/index.html";
+    }, 3000);
+}
+
 function validateSignIn(enteredEmail, enteredPassword) {
     const account = accList.find(account => account.email === enteredEmail);
-
     if (!account) {
         showAlert("Email not found. Please check your email.");
         emailInput.classList.add('is-invalid');
         return false;
     }
-
     if (account.password !== enteredPassword) {
         showAlert("Incorrect password. Please check your password.");
         passwordInput.classList.add('is-invalid');
@@ -253,10 +246,4 @@ function validateSignIn(enteredEmail, enteredPassword) {
     passwordInput.classList.remove('is-invalid');
     return true;
 }
-function showLoadingScreen() {
-    const loadingScreen = document.getElementById('loadingScreen');
-    loadingScreen.classList.replace('d-none', 'd-flex');
-    setTimeout(function () {
-        window.location.href = "../CRUD/index.html";
-    }, 2000);
-}
+
